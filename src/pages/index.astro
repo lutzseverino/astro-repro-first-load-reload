@@ -1,0 +1,17 @@
+---
+import { getCollection } from 'astro:content';
+const posts = await getCollection('blog');
+---
+<html lang="en">
+  <head><meta charset="utf-8" /><title>First-load reload repro</title></head>
+  <body>
+    <ul>{posts.map((post) => <li>{post.data.title}</li>)}</ul>
+    <script is:inline>
+      // Counts loads of this tab, so a reload right after the first load shows "#2".
+      const n = Number(sessionStorage.getItem('loads') ?? 0) + 1;
+      sessionStorage.setItem('loads', String(n));
+      console.log(`page load #${n}`);
+      document.body.insertAdjacentHTML('beforeend', `<p id="loads">page load #${n}</p>`);
+    </script>
+  </body>
+</html>

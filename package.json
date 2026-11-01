@@ -1,0 +1,13 @@
+{
+  "name": "astro-first-load-full-reload",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build"
+  },
+  "dependencies": {
+    "astro": "7.4.4"
+  }
+}
